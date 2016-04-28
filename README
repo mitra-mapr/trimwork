@@ -1,0 +1,13 @@
+1. Get the max number of sectors of the SSD
+  # hdparm -i /dev/sda
+ 
+  In the output look for the "LBA48 user accessible sectors" like the following:
+   	LBA48  user addressable sectors: 1000215216
+
+2. Generate the sector ranges for trimming using the script: generate-sector-ranges.sh and store the output in sector-ranges
+  # ./generate-sector-ranges.sh 1000215216 1  > sector-ranges
+
+3. Modify the script trim-drives.sh and add the drives need to be trimmed
+  # ./trim-drives.sh
+
+
